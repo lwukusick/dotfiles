@@ -76,3 +76,6 @@ let g:tmuxline_powerline_seperators = 0
 au BufReadPost *.hbs set syntax=html
 au BufReadPost *.ejs set syntax=javascript
 au BufReadPost *.rabl set syntax=ruby
+
+" Bind :W to write because I always accidentally type that when I mean :w
+command W w
