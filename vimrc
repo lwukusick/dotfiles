@@ -80,7 +80,5 @@ au BufReadPost *.rabl set syntax=ruby
 " Bind :W to write because I always accidentally type that when I mean :w
 command W w
 
-" Move swp files to their own directories
-set backupdir=~/.vim/backup//
-set directory=~/.vim/swap//
-set undodir=~/.vim/undo//
+" Get rid of swap files
+set noswapfile
