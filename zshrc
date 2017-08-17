@@ -92,3 +92,6 @@ alias vimconf='vim ~/.vimrc'
 eval "$(rbenv init -)"
 export PATH="/usr/local/opt/node@6/bin:$PATH"
 
+# vim keybindings
+bindkey -v
+export KEYTIMEOUT=1
