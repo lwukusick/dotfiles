@@ -1,4 +1,4 @@
-import Widget from 'resource:///com/github/Aylur/ags/widget.js';
+import { Widget } from '../imports.js';
 import SystemTempsService from '../services/SystemTempsService.js';
 
 const tempSuffix = "<sup>&#176;</sup>"
@@ -35,9 +35,18 @@ const gpuTemp = Widget.Box({
 
 export default Widget.Box({
     className: 'temps',
-    vertical: true,
+    halign: 'center',
+    valign: 'center',
     children: [
-        cpuTemp,
-        gpuTemp,        
+        Widget.Box({
+            className: 'grouping',
+            vertical: true,
+            halign: 'center',
+            valign: 'center',
+            children: [
+                cpuTemp,
+                gpuTemp,
+            ],
+        }),
     ],
 });

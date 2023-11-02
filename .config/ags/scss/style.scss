@@ -1,0 +1,297 @@
+@mixin common {
+    all: unset;
+
+    * {
+        font-size: $font_size;
+        font-family: $mono_font;
+    }
+}
+
+@mixin widget {
+    @include common;
+    border-radius: $radii;
+    color: $fg_color;
+    background-color: $widget_bg;
+    border: $border;
+    border-color: $border_color;
+    margin: 6px;
+}
+
+@mixin infowidget {
+  @include widget;
+  min-width: $info_widget_size;
+  min-height: $info_widget_size;
+  font-size: $font_size * 1.2;
+  font-weight: bold;
+}
+
+@mixin slider($width: .7em, $slider_width: .5em, $gradient: $active_gradient, $slider: true, $focusable: true, $radii: $radii){
+    @include common;
+    * { all:unset; }
+
+    trough{
+        transition: $transition;
+        border-radius: $radii;
+        border: $border;
+        background-color: $widget_bg;
+        min-height: $width;
+        min-width:  $width;
+
+        highlight, progress{
+            border-radius: $radii;
+            background-image: $gradient;
+            min-height: $width;
+            min-width:  $width;
+        }
+    }
+
+    slider {
+        box-shadow: none;
+        background-color: transparent;
+        border: $border_width solid transparent;
+        transition: $transition;
+        border-radius: $radii;
+        min-height: $width;
+        min-width:  $width;
+        margin: -$slider_width;
+    }
+
+    &:hover {
+        trough {
+            background-color: $hover;
+        }
+
+        slider {
+            @if $slider{
+                background-color: $fg_color;
+                border-color: $border-color;
+
+                @if $drop_shadow {
+                    box-shadow: 0 0 3px 0 $shadow;
+                }
+            }
+        }
+    }
+
+    &:disabled {
+        highlight, progress{
+            background-color: transparentize($fg_color, 0.4);
+            background-image: none;
+        }
+
+        slider {
+            @if $slider {
+                background-color: transparentize($fg_color, 0.5);
+            }
+        }
+    }
+
+    @if $focusable {
+        trough:focus{
+            background-color: $hover;
+            box-shadow: inset 0 0 0 $border_width $accent;
+
+            slider {
+                @if $slider {
+                    background-color: $fg_color;
+                    box-shadow: inset 0 0 0 $border_width $accent;
+                }
+            }
+        }
+
+    }
+}
+
+
+.infobar {
+  background-color: transparent;
+  .padding {
+    margin: 0 $infobar_margin $infobar_margin $infobar_margin;
+  }
+}
+
+.datetime {
+    @include widget;
+    background-color: transparent;
+    color: $widget_bg;
+}
+
+.clock-box {
+    padding: 0px 34px;
+    border: $border * 2;
+    border-style: solid;
+    border-radius: $radii * 4;
+    font-size: 150px;
+    @if $clock_shadow {
+        text-shadow: $text_shadow;
+        box-shadow: 0px 0px 0px 2px $shadow, inset 0px 0px 0px 2px $shadow;
+    }
+
+    .clock {
+        font-family: $mono_font;
+    }
+
+    .clock-colon {
+        margin: -30px 0px 0px 0px;
+        font-family: $font, sans-serif;
+    }
+}
+
+.date {
+    background-color: transparent;
+    border-style: none;
+    font-weight: bold;
+    font-size: 2.2em;
+    padding: 10px 20px 0px 0px;
+    font-family: $mono_font;
+    @if $clock_shadow {
+        text-shadow: $text_shadow;
+    }
+}
+
+.mediaplayer {
+  @include widget;
+
+  .playercontrols {
+    padding: 0 12px 0 12px;
+  }
+  .playercontrols button {
+    all: unset;
+    label {
+      font-size: 1.8em;
+      color: transparentize($shader_fg, 0.1);
+      transition: $transition;
+      margin: 5px;
+
+      &.playing, &.paused, &.stopped {
+        font-size: 2.4em;
+      }
+    }
+    
+    &:hover label {
+      color: transparentize($shader_fg, 0.2);
+    }
+  }
+
+  .song-status {
+    padding-right: 5px;
+
+    .labels {
+      padding: 10px 10px 0 10px;
+      font-weight: bold;
+    }
+
+    .position-slider {
+      @include slider($width: 0.4em, $slider: false, $gradient: linear-gradient($shader_fg, $shader_fg), $radii: $border_width / 2);
+      margin: 10px;
+
+      trough {
+        border: none;
+        background-color: transparentize($shader_fg, 0.7);
+      }
+    }
+  }
+}
+
+.hub {
+  @include widget;
+  padding: 5px;
+}
+
+.temps {
+  @include infowidget;
+  padding: 0;
+  .grouping {
+    margin: 0 0 0 15px;
+
+    image {
+      padding-right: 3px;
+    }
+  }
+}
+
+.volume {
+  margin: 0px;
+}
+
+.audio-info {
+  @include infowidget;
+  padding: 0;
+  .grouping {
+    margin: 0 0 0 16px;
+
+    .volume {
+      margin: 0 0 2px 0;
+    }
+
+    .volume-label {
+      margin: 0 0 0 2px;
+    }
+
+    .audio-sink {
+      margin: 0 2px 0 0;
+    }
+  }
+}
+
+.mediaplayer {
+  min-height: $info_widget_size;
+}
+
+.notifications {
+  background-color: darken($widget_bg, 10%);
+  border-radius: $radii;
+  
+  .notification {
+    box {
+      background-color: $widget_bg;
+      border-radius: $radii;
+      margin: 2px
+    }
+
+    .title {
+      padding: 2px;
+      font-weight: bold;
+    }
+
+    .description {
+      padding: 2px;
+    }
+
+    .close-button {
+      all: unset; 
+      background-color: darken($widget_bg, 10%);
+      border-radius: $radii*0.6;
+      padding: 2px;
+      margin-left: 2px;
+    }
+
+    .action-button {
+      all: unset;
+      background-color: darken($widget_bg, 10%);
+      border-radius: $radii*0.6;
+      padding: 2px;
+    }
+  }
+}
+
+.hyprland-monitors {
+  margin-top: 2px;
+  button {
+    transition: $transition;
+    all: unset;
+    background-color: darken($widget_bg, 10%);
+    min-width: 20px;
+    min-height: 20px;
+    margin: 2px;
+    border-radius: $radii*0.6;
+    font-size: $font_size*0.8;
+  }
+
+  .active {
+    border-color: $accent;
+    background-color: $accent;
+    color: $widget_bg;
+  }
+}
+

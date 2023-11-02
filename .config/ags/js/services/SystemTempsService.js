@@ -1,5 +1,4 @@
-import Service from 'resource:///com/github/Aylur/ags/service.js';
-import { subprocess, execAsync } from 'resource:///com/github/Aylur/ags/utils.js';
+import { Service, Utils } from '../imports.js';
 
 class SystemTemps extends Service {
     static {
@@ -25,7 +24,7 @@ class SystemTemps extends Service {
     constructor() {
         super();
 
-        subprocess(
+        Utils.subprocess(
             ["nvidia-smi", "--query-gpu=temperature.gpu", "--format=csv", "-l", this.gpuFreq.toString()],
             (output) => {
                 let newTemp = Number(output);
@@ -42,7 +41,7 @@ class SystemTemps extends Service {
     }
     
     loopCpuTemp() {
-        execAsync(["sensors", "-j"])
+        Utils.execAsync(["sensors", "k10temp-pci-00c3", "-j"])
             .then((output) => {
                 let newTemp = JSON.parse(output)["k10temp-pci-00c3"]["Tccd1"]["temp3_input"];
                 if (newTemp != this._cpuTemp) {
@@ -50,7 +49,7 @@ class SystemTemps extends Service {
                     this.emit('cpu-changed', newTemp);
                     this.emit('changed');
                 }               
-                execAsync(["sleep", this.cpuFreq.toString()])
+                Utils.execAsync(["sleep", this.cpuFreq.toString()])
                     .then(() => this.loopCpuTemp())
                     .catch((err) => logError(err));
             })

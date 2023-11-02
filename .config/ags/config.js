@@ -1,10 +1,13 @@
-import Widget from 'resource:///com/github/Aylur/ags/widget.js';
-import App from 'resource:///com/github/Aylur/ags/app.js';
+import { Widget, App } from './js/imports.js';
 import Infobar from './js/infobar/Infobar.js';
+import { watchAndCompileSass } from './js/utils.js';
+
+watchAndCompileSass();
 
 export default {
-    //style: App.configDir + '/style.css',
+    style: App.configDir + '/css/main.css',
     windows: [
         Infobar,
-    ]
+    ],
+	cacheNotificationActions: true,
 }

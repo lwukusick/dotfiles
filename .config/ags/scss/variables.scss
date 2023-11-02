@@ -1,0 +1,28 @@
+// Colors
+$fg_color: gray;
+$widget_bg: white;
+$border_color: white;
+$shadow: black;
+$text_shadow: 2px 2px $shadow, -2px 2px $shadow, 2px -2px $shadow, -2px -2px $shadow, 0px 0px $shadow;
+$shader_fg: gray;
+$accent: rgb(214, 104, 83);
+$active_gradient: linear-gradient(to right, $accent, lighten($accent, 6%));
+$hover: transparentize($widget_bg, 0.9);
+
+// Outlines
+$border: 5px;
+$radii: 4px; 
+$border_width: 9px;
+
+// Fonts
+$font: 'Noto Sans';
+$mono_font: 'Mononoki', monospace;
+$font_size: 1em;
+
+// Sizes
+$info_widget_size: 73px;
+$infobar_margin: 6px;
+
+// Configuration
+$clock_shadow: false;
+$transition: 300ms;

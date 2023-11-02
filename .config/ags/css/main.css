@@ -1,0 +1,265 @@
+.infobar {
+  background-color: transparent;
+}
+.infobar .padding {
+  margin: 0 6px 6px 6px;
+}
+
+.datetime {
+  all: unset;
+  border-radius: 4px;
+  color: gray;
+  background-color: white;
+  border: 5px;
+  border-color: white;
+  margin: 6px;
+  background-color: transparent;
+  color: white;
+}
+.datetime * {
+  font-size: 1em;
+  font-family: "Mononoki", monospace;
+}
+
+.clock-box {
+  padding: 0px 34px;
+  border: 10px;
+  border-style: solid;
+  border-radius: 16px;
+  font-size: 150px;
+}
+.clock-box .clock {
+  font-family: "Mononoki", monospace;
+}
+.clock-box .clock-colon {
+  margin: -30px 0px 0px 0px;
+  font-family: "Noto Sans", sans-serif;
+}
+
+.date {
+  background-color: transparent;
+  border-style: none;
+  font-weight: bold;
+  font-size: 2.2em;
+  padding: 10px 20px 0px 0px;
+  font-family: "Mononoki", monospace;
+}
+
+.mediaplayer {
+  all: unset;
+  border-radius: 4px;
+  color: gray;
+  background-color: white;
+  border: 5px;
+  border-color: white;
+  margin: 6px;
+}
+.mediaplayer * {
+  font-size: 1em;
+  font-family: "Mononoki", monospace;
+}
+.mediaplayer .playercontrols {
+  padding: 0 12px 0 12px;
+}
+.mediaplayer .playercontrols button {
+  all: unset;
+}
+.mediaplayer .playercontrols button label {
+  font-size: 1.8em;
+  color: rgba(128, 128, 128, 0.9);
+  transition: 300ms;
+  margin: 5px;
+}
+.mediaplayer .playercontrols button label.playing, .mediaplayer .playercontrols button label.paused, .mediaplayer .playercontrols button label.stopped {
+  font-size: 2.4em;
+}
+.mediaplayer .playercontrols button:hover label {
+  color: rgba(128, 128, 128, 0.8);
+}
+.mediaplayer .song-status {
+  padding-right: 5px;
+}
+.mediaplayer .song-status .labels {
+  padding: 10px 10px 0 10px;
+  font-weight: bold;
+}
+.mediaplayer .song-status .position-slider {
+  all: unset;
+  margin: 10px;
+}
+.mediaplayer .song-status .position-slider * {
+  font-size: 1em;
+  font-family: "Mononoki", monospace;
+}
+.mediaplayer .song-status .position-slider * {
+  all: unset;
+}
+.mediaplayer .song-status .position-slider trough {
+  transition: 300ms;
+  border-radius: 4.5px;
+  border: 5px;
+  background-color: white;
+  min-height: 0.4em;
+  min-width: 0.4em;
+}
+.mediaplayer .song-status .position-slider trough highlight, .mediaplayer .song-status .position-slider trough progress {
+  border-radius: 4.5px;
+  background-image: linear-gradient(gray, gray);
+  min-height: 0.4em;
+  min-width: 0.4em;
+}
+.mediaplayer .song-status .position-slider slider {
+  box-shadow: none;
+  background-color: transparent;
+  border: 9px solid transparent;
+  transition: 300ms;
+  border-radius: 4.5px;
+  min-height: 0.4em;
+  min-width: 0.4em;
+  margin: -0.5em;
+}
+.mediaplayer .song-status .position-slider:hover trough {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.mediaplayer .song-status .position-slider:disabled highlight, .mediaplayer .song-status .position-slider:disabled progress {
+  background-color: rgba(128, 128, 128, 0.6);
+  background-image: none;
+}
+.mediaplayer .song-status .position-slider trough:focus {
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 0 0 9px rgb(214, 104, 83);
+}
+.mediaplayer .song-status .position-slider trough {
+  border: none;
+  background-color: rgba(128, 128, 128, 0.3);
+}
+
+.hub {
+  all: unset;
+  border-radius: 4px;
+  color: gray;
+  background-color: white;
+  border: 5px;
+  border-color: white;
+  margin: 6px;
+  padding: 5px;
+}
+.hub * {
+  font-size: 1em;
+  font-family: "Mononoki", monospace;
+}
+
+.temps {
+  all: unset;
+  border-radius: 4px;
+  color: gray;
+  background-color: white;
+  border: 5px;
+  border-color: white;
+  margin: 6px;
+  min-width: 73px;
+  min-height: 73px;
+  font-size: 1.2em;
+  font-weight: bold;
+  padding: 0;
+}
+.temps * {
+  font-size: 1em;
+  font-family: "Mononoki", monospace;
+}
+.temps .grouping {
+  margin: 0 0 0 15px;
+}
+.temps .grouping image {
+  padding-right: 3px;
+}
+
+.volume {
+  margin: 0px;
+}
+
+.audio-info {
+  all: unset;
+  border-radius: 4px;
+  color: gray;
+  background-color: white;
+  border: 5px;
+  border-color: white;
+  margin: 6px;
+  min-width: 73px;
+  min-height: 73px;
+  font-size: 1.2em;
+  font-weight: bold;
+  padding: 0;
+}
+.audio-info * {
+  font-size: 1em;
+  font-family: "Mononoki", monospace;
+}
+.audio-info .grouping {
+  margin: 0 0 0 16px;
+}
+.audio-info .grouping .volume {
+  margin: 0 0 2px 0;
+}
+.audio-info .grouping .volume-label {
+  margin: 0 0 0 2px;
+}
+.audio-info .grouping .audio-sink {
+  margin: 0 2px 0 0;
+}
+
+.mediaplayer {
+  min-height: 73px;
+}
+
+.notifications {
+  background-color: #e6e6e6;
+  border-radius: 4px;
+}
+.notifications .notification box {
+  background-color: white;
+  border-radius: 4px;
+  margin: 2px;
+}
+.notifications .notification .title {
+  padding: 2px;
+  font-weight: bold;
+}
+.notifications .notification .description {
+  padding: 2px;
+}
+.notifications .notification .close-button {
+  all: unset;
+  background-color: #e6e6e6;
+  border-radius: 2.4px;
+  padding: 2px;
+  margin-left: 2px;
+}
+.notifications .notification .action-button {
+  all: unset;
+  background-color: #e6e6e6;
+  border-radius: 2.4px;
+  padding: 2px;
+}
+
+.hyprland-monitors {
+  margin-top: 2px;
+}
+.hyprland-monitors button {
+  transition: 300ms;
+  all: unset;
+  background-color: #e6e6e6;
+  min-width: 20px;
+  min-height: 20px;
+  margin: 2px;
+  border-radius: 2.4px;
+  font-size: 0.8em;
+}
+.hyprland-monitors .active {
+  border-color: rgb(214, 104, 83);
+  background-color: rgb(214, 104, 83);
+  color: white;
+}
+
+/*# sourceMappingURL=main.css.map */

@@ -1,4 +1,4 @@
-import Widget from 'resource:///com/github/Aylur/ags/widget.js';
+import { Widget } from '../imports.js';
 import GLib from 'gi://GLib';
 
 const clockLabel = ({
@@ -10,20 +10,22 @@ const clockLabel = ({
     ...props,
     connections: [[interval, label => 
         label.label = GLib.DateTime.new_now_local().format(format),
-    ]]
+    ]],
 })
 
 const dateLabel = ({ interval = 1000 } = {}) => Widget.Label({
-    className: 'date-label',
+    className: 'date',
+    halign: 'end',
     connections: [[interval, label => {
         const now = GLib.DateTime.new_now_local();
         const day = now.format("\%e").trim();
         label.label = now.format("%A, %B ") + day
-    }]]
+    }]],
 })
 
 const clock = Widget.Box({
     halign: 'center',
+    className: 'clock',
     children: [
         clockLabel({ format: "%H" }),
         Widget.Label({
@@ -31,14 +33,15 @@ const clock = Widget.Box({
             label: ':',
         }),
         clockLabel({ format: "%M" }),
-    ]    
+    ],
 });
 
 export default Widget.Box({
     vertical: true,
+    className: 'datetime',
     children: [
-        clock,
+        Widget.Box({ className: 'clock-box', children: [clock] }),
         dateLabel({ justification: "right" }),
-    ]
+    ],
 });
 
