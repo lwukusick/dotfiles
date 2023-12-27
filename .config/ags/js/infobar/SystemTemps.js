@@ -4,7 +4,7 @@ import SystemTempsService from '../services/SystemTempsService.js';
 const tempSuffix = "<sup>&#176;</sup>"
 
 const cpuTemp = Widget.Box({
-    className: 'cpu-temp',
+    class_name: 'cpu-temp',
     children: [
         Widget.Icon({
             icon: 'accessories-calculator-symbolic',
@@ -19,7 +19,7 @@ const cpuTemp = Widget.Box({
 });
 
 const gpuTemp = Widget.Box({
-    className: 'gpu-temp',
+    class_name: 'gpu-temp',
     children: [
         Widget.Icon({
             icon: 'video-display-symbolic',
@@ -33,16 +33,17 @@ const gpuTemp = Widget.Box({
     ]
 });
 
-export default Widget.Box({
-    className: 'temps',
-    halign: 'center',
-    valign: 'center',
+export default ({...props} = {}) => Widget.Box({
+    ...props,
+    class_name: 'temps',
+    hpack: 'center',
+    vpack: 'center',
     children: [
         Widget.Box({
-            className: 'grouping',
+            class_name: 'grouping',
             vertical: true,
-            halign: 'center',
-            valign: 'center',
+            hpack: 'center',
+            vpack: 'center',
             children: [
                 cpuTemp,
                 gpuTemp,

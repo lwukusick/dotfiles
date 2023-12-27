@@ -256,17 +256,13 @@
   button {
     transition: $transition;
     margin: 2px;
-    padding: 2px 8px;
+    padding: 2px;
     border: none;
     font-size: $font_size*0.8;
   }
 
   background-color: darken($widget_bg, 10%);
   border-radius: $radii;
-
-  .header {
-    padding: 0 0 0 6px;
-  }
   
   .notification {
     box {
@@ -314,17 +310,10 @@
     font-size: $font_size*0.8;
   }
 
-  .monitor-active {
-    border-color: darken($accent, 20%);
-    background-color: darken($accent, 20%);
-    color: $widget_bg;
-
-    
-  }
-
   .active {
     border-color: $accent;
     background-color: $accent;
+    color: $widget_bg;
   }
 }
 

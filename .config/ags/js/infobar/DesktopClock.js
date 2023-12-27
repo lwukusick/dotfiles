@@ -6,7 +6,7 @@ const clockLabel = ({
     interval = 1000,
     ...props
 } = {}) => Widget.Label({
-    className: 'clock-label',
+    class_name: 'clock-label',
     ...props,
     connections: [[interval, label => 
         label.label = GLib.DateTime.new_now_local().format(format),
@@ -14,8 +14,8 @@ const clockLabel = ({
 })
 
 const dateLabel = ({ interval = 1000 } = {}) => Widget.Label({
-    className: 'date',
-    halign: 'end',
+    class_name: 'date',
+    hpack: 'end',
     connections: [[interval, label => {
         const now = GLib.DateTime.new_now_local();
         const day = now.format("\%e").trim();
@@ -24,12 +24,12 @@ const dateLabel = ({ interval = 1000 } = {}) => Widget.Label({
 })
 
 const clock = Widget.Box({
-    halign: 'center',
-    className: 'clock',
+    hpack: 'center',
+    class_name: 'clock',
     children: [
         clockLabel({ format: "%H" }),
         Widget.Label({
-            className: 'clock-colon',
+            class_name: 'clock-colon',
             label: ':',
         }),
         clockLabel({ format: "%M" }),
@@ -38,9 +38,9 @@ const clock = Widget.Box({
 
 export default Widget.Box({
     vertical: true,
-    className: 'datetime',
+    class_name: 'datetime',
     children: [
-        Widget.Box({ className: 'clock-box', children: [clock] }),
+        Widget.Box({ class_name: 'clock-box', children: [clock] }),
         dateLabel({ justification: "right" }),
     ],
 });

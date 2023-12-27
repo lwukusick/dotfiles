@@ -1,8 +1,11 @@
 import { Widget } from '../imports.js';
 import DesktopClock from './DesktopClock.js';
 import SystemTemps from './SystemTemps.js';
+import AudioInfo from '../audioinfo/AudioInfo.js';
 import HyprlandWorkspaces from '../hyprland/HyprlandInfo.js'
 import { Separator } from '../misc.js';
+import { ShutdownButton, RestartButton, SuspendButton } from '../systemcontrols/SystemButtons.js';
+import Notifications  from '../notifications/NotificationsLayout.js';
 
 const hyprlandIconMap = {
   "firefox": "firefox-symbolic",
@@ -10,45 +13,55 @@ const hyprlandIconMap = {
 }
 
 const hub = Widget.Box({
-  className: 'hub',
+  class_name: 'hub',
   vertical: true,
   children: [
-    Widget.Box({ 
-      vexpand: true,
-      className: 'notifications',
+    Widget.Box({
+      class_name: 'system-buttons',
+      hpack:'start',
+      children: [
+        ShutdownButton(),
+        RestartButton(),
+        SuspendButton(),
+      ]
     }),
+//    Widget.Box({ 
+//      vexpand: true,
+//      class_name: 'notifications',
+//    }),
+    Notifications(),
     Widget.CenterBox({ 
-        className: 'hyprland-monitors',
+        class_name: 'hyprland-monitors',
         hexpand: true,
-        halign: 'fill',
+        hpack: 'fill',
         children: [
               HyprlandWorkspaces({
                 monitor: 'DP-3',
-                halign: 'start',
+                hpack: 'start',
                 defaultChild: (w) => Widget.Box({
-                  className: 'indicator',
-                  valign: 'center',
-                  halign: 'center',
+                  class_name: 'indicator',
+                  vpack: 'center',
+                  hpack: 'center',
                   children: [
                     Widget.Icon({
-                      className: 'fill',
+                      class_name: 'fill',
                       size: 14,
                       icon: hyprlandIconMap[w.name],
                     })
                   ],
                 }),
               }),
-              Separator({ halign: 'center', hexpand: false }),
+              Separator({ hpack: 'center', hexpand: false }),
               HyprlandWorkspaces({
                 monitor: 'DP-1',
-                halign: 'end',
+                hpack: 'end',
                 defaultChild: (w) => Widget.Box({
-                  className: 'indicator',
-                  valign: 'center',
-                  halign: 'center',
+                  class_name: 'indicator',
+                  vpack: 'center',
+                  hpack: 'center',
                   children: [
                     Widget.Label({
-                      className: 'fill',
+                      class_name: 'fill',
                       label: w.name,
                     })
                   ],
@@ -61,7 +74,7 @@ const hub = Widget.Box({
 
 export default Widget.Window({
     name: 'infobar',
-    className: 'infobar',
+    class_name: 'infobar',
     anchor: ["bottom", "left", "right"],
     exclusive: true,
     layer: "bottom",
@@ -76,7 +89,8 @@ export default Widget.Window({
                     vertical: true,
                     vexpand: true,
                     children: [
-                      SystemTemps
+                      AudioInfo(),
+                      SystemTemps(),
                     ],
                   }),
                 ],

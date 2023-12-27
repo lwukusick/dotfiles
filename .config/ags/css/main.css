@@ -149,6 +149,18 @@
   font-family: "Mononoki", monospace;
 }
 
+.system-buttons button {
+  transition: 300ms;
+  all: unset;
+  background-color: #e6e6e6;
+  min-width: 20px;
+  min-height: 20px;
+  margin: 2px;
+  padding: 2px;
+  border-radius: 2.4px;
+  font-size: 0.8em;
+}
+
 .temps {
   all: unset;
   border-radius: 4px;
@@ -206,7 +218,7 @@
   margin: 0 0 0 2px;
 }
 .audio-info .grouping .audio-sink {
-  margin: 0 2px 0 0;
+  margin: 0 3px 0 0;
 }
 
 .mediaplayer {
@@ -216,6 +228,16 @@
 .notifications {
   background-color: #e6e6e6;
   border-radius: 4px;
+}
+.notifications button {
+  transition: 300ms;
+  margin: 2px;
+  padding: 2px 8px;
+  border: none;
+  font-size: 0.8em;
+}
+.notifications .header {
+  padding: 0 0 0 6px;
 }
 .notifications .notification box {
   background-color: white;
@@ -256,10 +278,14 @@
   border-radius: 2.4px;
   font-size: 0.8em;
 }
+.hyprland-monitors .monitor-active {
+  border-color: #9d3926;
+  background-color: #9d3926;
+  color: white;
+}
 .hyprland-monitors .active {
   border-color: rgb(214, 104, 83);
   background-color: rgb(214, 104, 83);
-  color: white;
 }
 
 /*# sourceMappingURL=main.css.map */
